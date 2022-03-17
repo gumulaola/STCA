@@ -1,4 +1,4 @@
-numbers = [10, 2, 40, 3, 4, 6, 12, 32, 1, 8]
+numbers = [3, 2, 1, 5, 6, 4]
 
 
 def max_heapify(nums, start, end):
@@ -25,4 +25,4 @@ def heap_max_k(nums, k):
     return nums[lens-k]
 
 
-print(heap_max_k(numbers, 4))
+print(heap_max_k(numbers, 2))
