@@ -1,30 +1,33 @@
+# 实现前缀树
+
 class Trie:
     def __init__(self):
-        self.children = [None] * 26
-        self.isEnd = False
+        self.children = [None]*26
+        self.is_end = False
 
     def insert(self, word):
-        node = self
+        cur = self
         for ch in word:
             ch = ord(ch) - ord("a")
-            if not node.children[ch]:
-                node.children[ch] = Trie()
-            node = node.children[ch]
-        node.isEnd = True
+            if not cur.children[ch]:
+                cur.children[ch] = Trie()
+            cur = cur.children[ch]
+        cur.is_end = True
 
-    def searchPrefix(self, prefix):
-        node = self
+    def search_prefix(self, prefix):
+        cur = self
         for ch in prefix:
             ch = ord(ch) - ord("a")
-            if not node.children[ch]:
-                return None
-            node = node.children[ch]
-        return node
+            if not cur.children[ch]:
+                return False
+            else:
+                cur = cur.children[ch]
+        return cur
 
     def search(self, word):
-        prefix = self.searchPrefix(word)
-        return prefix is not None and prefix.isEnd == True
+        res = self.search_prefix(word)
+        return res is not None and res.is_end
 
     def startsWith(self, prefix):
-        prefix = self.searchPrefix(prefix)
-        return prefix is not None
+        res = self.search_prefix(prefix)
+        return res is not None

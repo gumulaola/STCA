@@ -1,4 +1,7 @@
 # Definition for a binary tree node.
+from platform import node
+
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -19,5 +22,45 @@ def build_tree(numbers, index):
     return root
 
 
+'''
+        3
+    9       20
+        15      7
+'''
+
 numbers = [3, 9, 20, None, None, 15, 7]
 root = build_tree(numbers, 0)
+
+
+def serialize(root):
+    if not root:
+        return "null"
+
+    left = serialize(root.left)
+    right = serialize(root.right)
+
+    return str(root.val) + "," + left + "," + right
+
+
+print(serialize(root))
+
+
+def deserialize(data):
+    data = data.split(",")
+
+    def build(data):
+        if not data:
+            return None
+
+        cur = data.pop(0)
+        if cur == "null":
+            return None
+
+        node = TreeNode(int(cur))
+        node.left = build(data)
+        node.right = build(data)
+
+        return node
+
+    root = build(data)
+    return root
