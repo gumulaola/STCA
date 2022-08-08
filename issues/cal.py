@@ -1,6 +1,3 @@
-from __future__ import barry_as_FLUFL
-
-
 class Solution:
     def calculate(self, s):
         s.replace(" ", "")
