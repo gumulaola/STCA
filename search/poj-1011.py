@@ -46,7 +46,7 @@ def dfs(n, len, rLen, index):
             return True
         vis[i] = False
 
-        if rLen == len:
+        if rLen == len or rLen == nums[i]:
             break
 
         pre = nums[i]
