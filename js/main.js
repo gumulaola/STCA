@@ -8,7 +8,7 @@ function sendRequests(urls, max, callback) {
     return new Promise((resolve, reject) => {
       let period = Math.random() * 3000;
       setTimeout(() => {
-        console.log(url + " takes " + period + "and is finished.");
+        console.log(url + " takes " + period + " and is finished.");
         resolve(url);
       }, period);
     });
