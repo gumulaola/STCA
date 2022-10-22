@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 function Networking() {
   this.sendFetch = function (url, callback) {
-    let response = fetch(url)
+    fetch(url)
       .then((res) => {
         return res.text();
       })
